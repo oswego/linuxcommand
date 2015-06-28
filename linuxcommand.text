@@ -1,0 +1,19 @@
+# how to display certain lines from a text file in Linux?
+
+    // print lines from 100 ~ 120
+    sed -n '100,120p' filename
+
+    sed -n '100,+20p' filename
+
+        // you might be able to speed that up a little like this
+        sed -n '100,120p;121q' filename
+
+    head -n 120 filename | tail -n 20
+
+    tail -n 100 filename | head -n 20 // assume there are 200 lines in total in the file
+
+    cat -n filename | grep '^ *100' // this prints line 100
+
+    cat -n filename | grep -A 20 '^ *100' // this prints line 100 to line 120
+
+        // for lines around or before, see the -B or -C flags in the grep manual
